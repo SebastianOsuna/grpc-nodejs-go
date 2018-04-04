@@ -1,0 +1,21 @@
+syntax = 'proto3';
+
+message Polygon {
+  uint32 id = 1;
+
+  message Coordinate {
+    double lat = 1;
+    double lng = 2;
+  }
+
+  repeated Coordinate coordinates = 2;
+  uint32 level = 3;
+}
+
+message CellIDList {
+  repeated string messages = 1;
+}
+
+service PolygonCoverer {
+  rpc CoverPolygon (Polygon) returns (CellIDList) {}
+}
